@@ -26,7 +26,7 @@ const Logo = () => {
 export const Navbar = () => {
     return (
        <div
-            className="bg-white text-black mx-auto max-w-5xl px-2 sm:px-6 lg:px-8  border-2 rounded-lg mt-10 font-sans border-primary font-family-electrolize"
+            className="bg-white text-black mx-auto max-w-5xl px-2 sm:px-6 lg:px-8  border-2 rounded-lg mt-10  border-primary font-family-electrolize"
             style={{
                 clipPath: "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)",
                 borderRight: "2px solid var(--color-primary)",
