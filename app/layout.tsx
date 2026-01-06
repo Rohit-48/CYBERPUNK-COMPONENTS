@@ -56,7 +56,7 @@ export const BackgroundPattern = () =>{
               transparent 3px,
               transparent 8px
             ),
-            radial-gradient(ellipse 100% 100% at 10% 90%, #000 98%, transparent 90%)
+            radial-gradient(ellipse 100% 100% at 100% 90%, #000 98%, transparent 90%)
       `,
       WebkitMaskImage: `
  repeating-linear-gradient(
@@ -73,7 +73,7 @@ export const BackgroundPattern = () =>{
               transparent 3px,
               transparent 8px
             ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
+            radial-gradient(ellipse 100% 100% at 50% 100%, #000 90%, transparent 100%)
       `,
       maskComposite: "intersect",
       WebkitMaskComposite: "source-in",
