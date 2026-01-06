@@ -1,7 +1,5 @@
-import React from 'react'
-
-export const ComponentsPage = () => {
+export default function ComponentsPage({ params }: { params: { slug: string } }) {
   return (
-    <div>ComponentsPage</div>
+    <div>ComponentsPage - Slug: {params.slug}</div>
   )
 }

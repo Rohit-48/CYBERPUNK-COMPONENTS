@@ -40,7 +40,7 @@ export default function ComponentPage() {
             slug="glow-button"
           />
 
-          {/* Card 3 - No slug (not clickable) */}
+          {/* Card 3 - Has slug (clickable) */}
           <Card
             heading="Particle Background"
             description="Animated particle system creating dynamic backgrounds with interconnected nodes."

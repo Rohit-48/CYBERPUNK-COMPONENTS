@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 type CardInfoProps = {
     heading: string,
@@ -38,12 +39,12 @@ export const Card = ({
     const CardWrapper = ({ children }: { children: React.ReactNode }) => {
         if (slug) {
             return (
-                <a
+                <Link
                     href={`/clips/${slug}`}
                     className='block'
                 >
                     {children}
-                </a>
+                </Link>
             );
         }
         return <>{children}</>
