@@ -1,46 +1,46 @@
-"use client"
-import { useTheme } from "next-themes"
-import { MoonIcon, SunIcon } from "lucide-react";
+"use client";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const ModeToggle = () => {
-    const { theme, setTheme } = useTheme()
-    const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-    useEffect(()=>{
-        const mediaQuery = window.matchMedia('(perfers-color-scheme: dark)');
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-        const handleChange = (e: MediaQueryListEvent) =>{
-             setSystemTheme (e.matches ? 'dark':'light')
-        }
-
-        mediaQuery.addEventListener('change', handleChange)
-
-        return  () => mediaQuery.removeEventListener('change', handleChange);
-    },)
-    const SWITCH = () => {
-        switch(theme){
-            case "light":{
-                setTheme("dark");
-                return;
-            }case "dark":{
-                setTheme("light");
-                return;
-            }case "system":{
-                setTheme(systemTheme === 'light' ? 'dark': 'light')
-                return
-            }default:{
-                return;
-            }
-        }
+  const toggleTheme = () => {
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
     }
-    return (
-        <button
-            className="relative size-8 flex items-center justify-center bg-yellow-300 rounded-full border-2 p-4 hover:scale-105 transition-all duration-300 cursor-pointer dark:bg-white dark:text-black"
-            onClick={SWITCH}>
-            <SunIcon size={14} className="rotate-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 transition-all duration-200 dark:rotate-90 dark:scale-0" />
-            <MoonIcon size={14} className="rotate-90 scale-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-200 dark:rotate-0 dark:scale-100" />
+  };
 
-        </button>
-    )
-}
+  if (!mounted) {
+    return (
+      <div 
+        className="w-9 h-9 bg-secondary/50"
+        style={{ clipPath: "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))" }}
+      />
+    );
+  }
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className="relative w-9 h-9 flex items-center justify-center bg-secondary/50 hover:bg-cyber-yellow/20 border border-border dark:border-cyber-yellow/20 hover:border-cyber-yellow/50 transition-all duration-300 group"
+      style={{ clipPath: "polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))" }}
+      aria-label="Toggle theme"
+    >
+      <Sun 
+        className="absolute w-4 h-4 text-cyber-yellow rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" 
+      />
+      <Moon 
+        className="absolute w-4 h-4 text-cyber-yellow rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" 
+      />
+    </button>
+  );
+};
