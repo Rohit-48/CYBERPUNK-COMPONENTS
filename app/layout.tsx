@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Funnel_Sans, Electrolize} from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import Container from "@/components/container";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,9 @@ export const BackgroundPattern = () =>{
     style={{
       backgroundImage: `
         linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px),
+        dark:linear-gradient(to right, #adb5bd 1px, transparent 1px),
+        dark:linear-gradient(to bottom, #adb5bd 1px, transparent 1px)
       `,
       backgroundSize: "20px 20px",
       backgroundPosition: "0 0, 0 0",
@@ -48,6 +51,7 @@ export const BackgroundPattern = () =>{
               black 3px,
               transparent 1px,
               transparent 8px
+              dark:repeating-linear-gradient(to right, #adb5bd 0px, #adb5bd 3px, transparent 1px, transparent 8px),
             ),
             repeating-linear-gradient(
               to bottom,
@@ -55,8 +59,10 @@ export const BackgroundPattern = () =>{
               black 3px,
               transparent 3px,
               transparent 8px
+              dark:repeating-linear-gradient(to bottom, #adb5bd 0px, #adb5bd 3px, transparent 3px, transparent 8px),
             ),
-            radial-gradient(ellipse 100% 100% at 100% 90%, #000 98%, transparent 90%)
+            radial-gradient(ellipse 100% 100% at 100% 90%, #000 98%, transparent 90%),
+            dark:radial-gradient(ellipse 100% 100% at 100% 90%, #adb5bd 98%, transparent 90%)
       `,
       WebkitMaskImage: `
  repeating-linear-gradient(
@@ -65,6 +71,7 @@ export const BackgroundPattern = () =>{
               black 3px,
               transparent 3px,
               transparent 8px
+              dark:repeating-linear-gradient(to right, #adb5bd 0px, #adb5bd 3px, transparent 1px, transparent 8px),
             ),
             repeating-linear-gradient(
               to bottom,
@@ -72,6 +79,7 @@ export const BackgroundPattern = () =>{
               black 3px,
               transparent 3px,
               transparent 8px
+              dark:repeating-linear-gradient(to bottom, #adb5bd 0px, #adb5bd 3px, transparent 3px, transparent 8px),
             ),
             radial-gradient(ellipse 100% 100% at 50% 100%, #000 90%, transparent 100%)
       `,
@@ -94,12 +102,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${electrolize.variable} ${funnelSans.variable} antialiased relative`}
         suppressHydrationWarning
       >
-        <BackgroundPattern />
-        <Container>
-          <Navbar />
-          {children}  
-        </Container>
-        
+        <ThemeProvider attribute='class' defaultTheme="system" enableSystem disableTransitionOnChange>
+          <BackgroundPattern />
+          <Container>
+            <Navbar />
+            {children}  
+          </Container>
+        </ThemeProvider>
       </body>
     </html>
   );

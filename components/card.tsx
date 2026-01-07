@@ -61,7 +61,7 @@ export const Card = ({
             >
 
                 <div
-                    className={`relative bg-[#2b2d42] p-10 overflow-hidden selection:bg-yellow-400 ${slug ? 'cursor-pointer' : ''} ${className}`}
+                    className={`relative bg-white dark:bg-[#2b2d42] p-10 overflow-hidden selection:bg-yellow-400 ${slug ? 'cursor-pointer' : ''} ${className}`}
                     style={{
                         clipPath: clipPathStyle
                     }}
